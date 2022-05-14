@@ -19,8 +19,20 @@ function solveEquation(a, b, c) {
 
 function calculateTotalMortgage(percent, contribution, amount, date) {
   let totalAmount;
+  let interestRate = Number(percent);
+  let initialPayment = Number(contribution);
+  let totalCost = Number(amount);
 
-  // код для задачи №2 писать здесь
+  if (interestRate === Number(interestRate)) {
+      totalAmount = `Параметр "Процентная ставка" содержит неправильное значения ${percent}`;
+    return totalAmount
+  } else if (initialPayment === Number(initialPayment)) {
+      totalAmount = `Параметр "Начальный взнос"  содержит неправильное значения ${contribution}`;
+    return totalAmount
+  } else if (totalCost === Number(totalCost)) {
+       totalAmount = `Параметр "Общая стоимость" содержит неправильное значения ${amount}`;
+     return totalAmount  
+  } 
 
   return totalAmount;
 }
