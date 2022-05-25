@@ -25,13 +25,14 @@ Student.prototype.addMarks = function (mark1, mark2,  mark3, ...rest) {
   if ( this.marks === undefined) {
     this.marks = [mark1, mark2, mark3];
    } else {
-    this.marks.push(mark1, mark2, mark3);
+    this.marks.push(mark1, mark2, mark3, ...rest);
    }
 }
 
 
 Student.prototype.getAverage = function() {
-  return this.marks.reduce((mark1, mark2, mark3) => (mark1 + mark2 + mark3) / this.marks.length)
+  let sum = this.marks.reduce((acc, rate) => acc + rate);
+  return sum / this.marks.length;
 }
 
 Student.prototype.exclude = function (reason) {
@@ -49,4 +50,3 @@ Student.prototype.exclude = function (reason) {
 
 
 
-// ваш код для остальных методов
