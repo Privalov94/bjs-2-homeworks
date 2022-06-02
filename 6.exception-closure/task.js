@@ -12,6 +12,9 @@ function validateCount(values) {
     try {
         parseCount(values);
         const parsedValues = Number.parseInt(values);
+        if (isNaN(parsedValues)) {
+            throw new Error ("Невалидное значение");
+        } 
         return parsedValues;
          
     }  catch (err) {
@@ -25,7 +28,7 @@ class Triangle {
         this.b = b;
         this.c = c;
 
-        if ((a + b > c) || (a + c > b) || (b + c > a)) {
+        if ((a + b < c) || (a + c < b) || (b + c < a)) {
             throw new Error("Треугольник с такими сторонами не существует");
         }
     }
@@ -36,7 +39,7 @@ class Triangle {
     }
 
     getArea () {
-        let p = sum / 2 ;
+        let p = (this.a + this.b + this.c) / 2 ;
         let s = Math.sqrt(p * (p - this.a) * (p - this.b) * (p - this.c));
         s = s.toFixed(3);
         s = Number(s);
