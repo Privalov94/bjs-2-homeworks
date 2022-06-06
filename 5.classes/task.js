@@ -32,55 +32,60 @@ class PrintEditionItem {
 
 class Magazine extends PrintEditionItem {
     constructor(name, releaseDate, pagesCount) {
+        super(name, releaseDate, pagesCount);
         this.name = name;
         this.releaseDate = releaseDate;
         this.pagesCount = pagesCount;
         this.state = 100;
-        this.type  = magazine;
+        this.type  = "magazine";
     }
 }
 
 class Book extends PrintEditionItem {
     constructor(name, releaseDate, pagesCount, author) {
+        super(name, releaseDate, pagesCount, author);
         this.name = name;
         this.releaseDate = releaseDate;
         this.pagesCount = pagesCount;
         this.author = author;
         this.state = 100;
-        this.type  = book;
+        this.type  = "book"
     }
 }
 
 class NovelBook extends Book {
     constructor(name, releaseDate, pagesCount, author) {
+        super(name, releaseDate, pagesCount, author);
         this.name = name;
         this.releaseDate = releaseDate;
         this.pagesCount = pagesCount;
         this.author = author;
         this.state = 100;
-        this.type  = novel;
+        this.type  = "novel";
     }
 }
 
 class FantasticBook extends Book  {
-    constructor(name, releaseDate, pagesCount, author) {
+     constructor(name, releaseDate, pagesCount, author) {
+        super(name, releaseDate, pagesCount, author);
         this.name = name;
         this.releaseDate = releaseDate;
         this.pagesCount = pagesCount;
         this.author = author;
         this.state = 100;
-        this.type  = fantastic;
+        this.type  = "fantastic";
     }
 }
 
 class DetectiveBook extends Book  {
     constructor(name, releaseDate, pagesCount, author) {
+        super(name, releaseDate, pagesCount, author);
         this.name = name;
         this.releaseDate = releaseDate;
         this.pagesCount = pagesCount;
         this.author = author;
         this.state = 100;
-        this.type  = detective;
+        this.type  = "detective";
     }
 }
   
@@ -94,29 +99,32 @@ class Library {
     }
  
     addBook(book) {
-        if(state > 30) {
+        if(this.state > 30) {
             this.books.push(book);
         }
     }
 
     findBookBy(type, value) {
-        [type, value]() 
-        this.books.find(element => {
-            if(element) {
-                return null;
-            } else {
-                return element;
-            }
-        })
+        this.books.find(function(item) {
+            item = [type, value]()
+        }) 
+        if(!this.name) {
+            return null;
+        } else {
+            return this.name;
+        }
     }
 
     giveBookByName(bookName) {
-        if(findIndex((value) => {
-            this.books.splice(value);
-            return bookName;
-        })) if(bookName) {
-            return null;
-        }
+      this.books.findIndex(function(value) {
+          if(bookName === value) {
+              this.books.splice()
+              return bookName;
+          } 
+          if(!bookName) {
+              return null;
+          }
+      }) 
 
     }
 }
