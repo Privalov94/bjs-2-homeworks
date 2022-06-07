@@ -21,12 +21,12 @@ class PrintEditionItem {
          if(number > 100) {
               this._state = 100;
         } else {
-            this._state;
+             this._state = number;
         }
     }
 
     get state() {
-        this._state;
+         return this._state;
     }
 }
 
@@ -39,34 +39,34 @@ class Magazine extends PrintEditionItem {
 
 
 class Book extends PrintEditionItem {
-    constructor(name, releaseDate, pagesCount, author) {
+    constructor(author, name, releaseDate, pagesCount) {
         super(name, releaseDate, pagesCount);
         this.author = author;
-        this.type  = "book"
+        this.type  = "book";
     }
 }
 
 class NovelBook extends Book {
-    constructor(name, releaseDate, pagesCount, author) {
-        super(name, releaseDate, pagesCount, author);
+    constructor(author, name, releaseDate, pagesCount) {
+        super(author, name, releaseDate, pagesCount, author);
         this.type  = "novel";
     }
 }
 
 class FantasticBook extends Book  {
-     constructor(name, releaseDate, pagesCount, author) {
-        super(name, releaseDate, pagesCount, author);
+     constructor(author, name, releaseDate, pagesCount) {
+        super(author, name, releaseDate, pagesCount);
         this.type  = "fantastic";
     }
 }
 
 class DetectiveBook extends Book  {
-    constructor(name, releaseDate, pagesCount, author) {
-        super(name, releaseDate, pagesCount, author);
+    constructor(author, name, releaseDate, pagesCount) {
+        super(author, name, releaseDate, pagesCount);
         this.type  = "detective";
     }
 }
-  
+
 
 //Задача №2//
 
@@ -84,7 +84,7 @@ class Library {
 
     findBookBy(type, value) {
         this.books.find(function(item) {
-            item = [type, value]()
+            item = [type, value]
         }) 
         if(!this.name) {
             return null;
