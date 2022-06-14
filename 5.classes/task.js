@@ -1,5 +1,7 @@
 'use strict'
 
+//Задача 1//
+
 class PrintEditionItem {
     constructor(name, releaseDate, pagesCount) {
         this.name = name;
@@ -77,33 +79,40 @@ class Library {
     }
  
     addBook(book) {
-        if(this.state > 30) {
+        if(book.state > 30) {
             this.books.push(book);
         }
     }
 
     findBookBy(type, value) {
-        this.books.find(function(item) {
-            item = [type, value]
-        }) 
-        if(!this.name) {
+         let result = this.books.find(function (item) {
+            item[type] === value;
+        })
+        if(!result) {
             return null;
         } else {
-            return this.name;
-        }
+            return result;   
+        }     
     }
 
     giveBookByName(bookName) {
-      this.books.findIndex(function(value) {
-          if(bookName === value) {
-              this.books.splice()
-              return bookName;
-          } 
-          if(!bookName) {
-              return null;
+        let found = false;
+        let i;
+        for(i = 0; i < this.books.length; i++) {
+          if (this.books[i].name === bookName) {
+            found = true;
+            break;
           }
-      }) 
-
+        }
+ 
+        if (!found) {
+            return null;
+        }
+      
+        var book = new Book(this.books[i].author, this.books[i].name, this.books[i].releaseDate, this.books[i].pagesCount);
+        this.books.splice(i, 1);
+      
+        return book;
     }
 }
 
