@@ -86,7 +86,7 @@ class Library {
 
     findBookBy(type, value) {
          let result = this.books.find(function (item) {
-            item[type] === value;
+             return item[type] === value;
         })
         if(!result) {
             return null;
